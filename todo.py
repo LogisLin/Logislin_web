@@ -1,9 +1,9 @@
 import sqlite3
 from pathlib import Path
-from bottle import Bottle, template, request, redirect, item, static_file
+from bottle import Bottle, template, request, redirect, static_file
 
 
-ABSOLUTE_APPLICATION_PATH = Path(__file__).parents[0]
+
 app = Bottle()
 
 @app.route('/')
