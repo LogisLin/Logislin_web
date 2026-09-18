@@ -1,0 +1,64 @@
+body > p:first-of-type {
+    font-size: 18px;
+    color: #012f78;
+    font-weight: 500;
+    margin: 20px 0;
+    text-align: center;
+}
+
+
+h1 {
+    color: #194080;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+
+form {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    text-align: center;
+}
+
+
+form p {
+    margin: 16px 0;
+    text-align: center;
+}
+
+
+input{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccd6e0;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+
+input{
+    outline: none;
+    border-color: #164288;
+    text-align: center;
+}
+
+
+select{
+    padding: 10px 12px;
+    border: 1px solid #ccd6e0;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+input[type="submit"]:hover {
+    background: #0f3066;
+    text-align: center;
+}

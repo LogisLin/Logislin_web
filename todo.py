@@ -1,14 +1,18 @@
+
 import sqlite3
 from pathlib import Path
 from bottle import Bottle, template, request, redirect, static_file
 
 
-
+ABSOLUTE_APPLICATION_PATH = Path(__file__).parents[0]
 app = Bottle()
+
 
 @app.route('/')
 def index():
-    redirect('/todo')
+    return template('home')
+
+
 
 
 @app.get('/todo')
@@ -32,6 +36,8 @@ def todo_list():
     return output
 
 
+
+
 @app.route('/new', method=['GET', 'POST'])
 def new_task():
     if request.POST:
@@ -44,6 +50,8 @@ def new_task():
             message=f'The new task was inserted into the database, the ID is {new_id}')
     else:
         return template('new_task.tpl')
+
+
 
 
 @app.route('/edit/<number:int>', method=['GET', 'POST'])
@@ -68,6 +76,8 @@ def edit_task(number):
         return template('edit_task', current_data=current_data, number=number)
 
 
+
+
 @app.route('/details/<task:re:[0-9]+>')
 def show_item(task):
         with sqlite3.connect('todo.db') as connection:
@@ -76,10 +86,12 @@ def show_item(task):
             result = cursor.fetchone()
         if not result:
             return template('message.tpl',
-            message = f'The task number {item} does not exist!')
+            message = f'The task number {any} does not exist!')
         else:
             return template('message.tpl',
             message = f'Task: {result[0]}, status: {result[1]}')
+
+
 
 
 @app.route('/as_json/<number:re:[0-9]+>')
@@ -94,15 +106,21 @@ def task_as_json(number):
         return {'id': result[0], 'task': result[1], 'status': result[2]}
 
 
+
+
 @app.route('/static/<filepath:path>')
 def send_static_file(filepath):
-    ROOT_PATH = ABSOLUTE_APPLICATION_PATH / 'static'
+    ROOT_PATH = ABSOLUTE_APPLICATION_PATH / 'static' # pyright: ignore[reportUndefinedVariable]
     return static_file(filepath, root= ROOT_PATH)
+
+
 
 
 @app.error(404)
 def mistake404(error):
     return 'Sorry, this page does not exist!'
+
+
 
 
 if __name__ == '__main__':
