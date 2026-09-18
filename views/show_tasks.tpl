@@ -11,3 +11,5 @@
 %end
 </table>
 <p><a href="/new">Add a new task</a></p>
+
+<p><a href="/">Back to main page</p >
